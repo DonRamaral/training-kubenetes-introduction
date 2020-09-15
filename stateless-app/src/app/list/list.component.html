@@ -1,0 +1,12 @@
+<table>
+    <tr>
+        <th>QUESTION</th>
+        <th>YES</th>
+        <th>NO</th>
+    </tr>
+    <tr *ngFor="let question of questions">
+        <td>{{question.text}}</td>
+        <td>{{question.yes}}</td>
+        <td>{{question.no}}</td>
+    </tr>
+</table>

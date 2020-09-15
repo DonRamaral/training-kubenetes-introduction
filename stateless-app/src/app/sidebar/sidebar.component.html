@@ -1,0 +1,13 @@
+<nav class="sidebar">
+    <div>
+        <a [ngClass]="{'selected': router.url.startsWith('/register')}" routerLink="/register">Register</a>
+    </div>
+    <div>
+        <a [ngClass]="{'selected': router.url.endsWith('/')}" routerLink="/">Summary</a>
+    </div>
+    <ul class="sub">
+        <li *ngFor="let question of voteService.questions" [ngClass]="{'selected': router.url.endsWith(question.id)}">
+            <a [routerLink]="['/vote', question.id]">{{question.text}}</a>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,37 @@
+.sidebar
+{
+  width: 205px;
+  float: left;
+}
+
+.sub {
+  margin-top: 0;
+  list-style-type: none;
+}
+
+.selected
+{
+  background-color: #ddf;
+}
+
+nav div
+{
+  border-top: solid 1px #fff;
+  width: inherit; 
+}
+
+a
+{
+  display:inline-block;
+  text-decoration: none;
+  width: inherit;
+}
+
+nav div a:hover
+{
+  background-color: #ddf;
+}
+
+a, a:visited, a:hover, a:active {
+  color: inherit;
+}

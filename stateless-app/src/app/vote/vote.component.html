@@ -1,0 +1,12 @@
+<div class="size">
+    <p class="question">{{question.text}}</p>
+    <label for="yes">
+        <p class="counter">{{ question.yes }}</p>
+        <button (click)="onVoteYes()">YES</button>
+    </label>
+    <label for="no">
+        <p class="counter">{{ question.no }}</p>
+        <button (click)="onVoteNo()">NO</button>
+    </label>
+    <div>{{votes}}</div>
+</div>
