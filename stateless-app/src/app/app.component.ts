@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { VoteService } from 'src/services/vote.service';
+import { QuestionService } from 'src/services/question.service';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private sub: any;
 
-  constructor(public voteService: VoteService,
+  constructor(public questionService: QuestionService,
     private router: Router) {
     this.sub = this.router.events.pipe(filter(e => e instanceof NavigationEnd))
       .subscribe((s: NavigationEnd) => {
@@ -29,8 +29,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   fetchQuestions() {
-    this.sub = this.voteService.listQuestions().subscribe(response => {
-      this.voteService.questions = response;
+    this.sub = this.questionService.listQuestions().subscribe(response => {
+      this.questionService.questions = response;
     });
   }
 }

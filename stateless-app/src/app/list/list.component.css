@@ -1,3 +1,55 @@
-a, a:visited, a:hover, a:active {
-    color: inherit;
-  }
+a,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+}
+
+a
+{
+  display:inline-block;
+  text-decoration: none;
+  width: inherit;
+}
+
+.size {
+  width: 800px;
+}
+
+tr td:nth-child(1):hover {
+  background-color: #ddf;
+  cursor: pointer;
+}
+
+tr td:nth-child(2) {
+  background-color: #008000;
+}
+
+tr td:nth-child(3) {
+  background-color: #ff0000;
+}
+
+tr td:nth-child(2),
+tr td:nth-child(3) {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}
+
+tr td {
+  border-bottom: #000000 solid 1px;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+table {
+  border: #000000 solid 1px;
+}
+
+tr th {
+  border-bottom: #000000 solid 1px;
+  background-color: #ddd;
+}

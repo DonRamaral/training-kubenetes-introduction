@@ -19,4 +19,5 @@ RUN dotnet publish "Voter.Api.csproj" -c Release -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+ENV ALLOWED_ORIGIN http://localhost:4200
 ENTRYPOINT ["dotnet", "Voter.Api.dll"]

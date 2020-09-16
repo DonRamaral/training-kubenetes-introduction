@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VoteService } from '../../services/vote.service';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-vote',
@@ -14,7 +14,7 @@ export class VoteComponent implements OnInit, OnDestroy {
   public votes: number;
   public question: any = { text: '', yes: 0, no: 0 };
 
-  constructor(public voteService: VoteService,
+  constructor(public questionService: QuestionService,
     private route: ActivatedRoute,
     public router: Router) {
   }
@@ -30,23 +30,22 @@ export class VoteComponent implements OnInit, OnDestroy {
   }
 
   onVoteYes() {
-    this.question.yes++;
-    this.vote();
+    this.vote(1, 0);
   }
 
   onVoteNo() {
     this.question.no++;
-    this.vote();
+    this.vote(0, 1);
   }
 
   fetchQuestion(id: string) {
-    this.voteService.getQuestionById(id).subscribe(response => {
+    this.questionService.getQuestionById(id).subscribe(response => {
       this.question = response;
     });
   }
 
-  vote() {
-    this.sub = this.voteService.voteQuestion(this.question).subscribe(response => {
+  vote(yes: number, no: number) {
+    this.sub = this.questionService.voteQuestion(this.question.id, yes, no).subscribe(response => {
       this.router.navigate(['/']);
     });
   }

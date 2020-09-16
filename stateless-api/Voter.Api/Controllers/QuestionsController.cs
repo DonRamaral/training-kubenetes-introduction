@@ -46,8 +46,14 @@ namespace Voter.Api.Controllers
         }
 
         [HttpPut("{id:length(24)}")]
-        public IActionResult Update(string id, Question questionIn)
+        public IActionResult Update(string id, Vote vote)
         {
+            if (vote.Yes == 0 && vote.No == 0)
+                return new ObjectResult("Invalid vote.")
+                {
+                    StatusCode = 412
+                };
+
             var question = _questionService.Get(id);
 
             if (question == null)
@@ -55,7 +61,12 @@ namespace Voter.Api.Controllers
                 return NotFound();
             }
 
-            _questionService.Update(id, questionIn);
+            if (vote.Yes > 0)
+                question.Yes++;
+            else if (vote.No > 0)
+                question.No++;
+
+            _questionService.Update(id, question);
 
             return NoContent();
         }

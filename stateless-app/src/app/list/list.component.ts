@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { VoteService } from '../../services/vote.service';
+import { Router } from '@angular/router';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-list',
@@ -11,12 +12,13 @@ export class ListComponent implements OnInit, OnDestroy {
   private sub: any;
   public questions: any;
 
-  constructor(public voteService: VoteService) {
+  constructor(public questionService: QuestionService,
+    public router: Router) {
     this.fetchQuestions();
   }
 
   fetchQuestions() {
-    this.sub = this.voteService.listQuestions().subscribe(response => {
+    this.sub = this.questionService.listQuestions().subscribe(response => {
       this.questions = response;
     });
   }
@@ -27,5 +29,9 @@ export class ListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sub.unsubscribe();
+  }
+
+  onClickQuestion(question: any) {
+    this.router.navigate([ 'vote', question.id ]);
   }
 }

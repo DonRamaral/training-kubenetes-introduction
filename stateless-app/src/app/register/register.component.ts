@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { VoteService } from '../../services/vote.service';
+import { QuestionService } from '../../services/question.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   private sub: any;
   public text: string;
 
-  constructor(public voteService: VoteService, public router: Router) { }
+  constructor(public questionService: QuestionService, public router: Router) { }
 
   ngOnInit() {
   }
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.text = '';
     }
     else {
-      this.sub = this.voteService.insertQuestion(this.text).subscribe(response => {
+      this.sub = this.questionService.insertQuestion(this.text).subscribe(response => {
         this.router.navigate(['vote', response.id]);
       });
     }

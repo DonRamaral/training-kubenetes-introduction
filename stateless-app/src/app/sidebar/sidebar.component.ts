@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { VoteService } from '../../services/vote.service';
+import { QuestionService } from '../../services/question.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +9,7 @@ import { VoteService } from '../../services/vote.service';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
 
-  constructor(public voteService: VoteService,
+  constructor(public questionService: QuestionService,
     public router: Router) {
   }
 
