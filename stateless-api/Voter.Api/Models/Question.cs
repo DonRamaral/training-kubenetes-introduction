@@ -16,8 +16,10 @@ namespace Voter.Api.Models
         [BsonElement("text")]
         public string Text { get; set; }
 
+        [BsonElement("yes")]
         public int Yes { get; set; }
 
+        [BsonElement("no")]
         public int No { get; set; }
     }
 }
